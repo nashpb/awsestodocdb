@@ -1,0 +1,16 @@
+{
+  "name": "estomongojs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "nashpb",
+  "license": "ISC",
+  "description": "An node app to read data from a particular index in AWS ES and store it into a collection in a docdb instance",
+  "dependencies": {
+    "elasticsearch": "^16.7.2",
+    "mongodb": "^3.6.9"
+  }
+}

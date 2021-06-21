@@ -1,0 +1,17 @@
+{
+    "es" : {
+        "url": "",
+        "username": "",
+        "password": "",
+        "index": "",
+        "pageLength": "" 
+    },
+    "mongo" : {
+        "url": "",
+        "port": "",
+        "username": "",
+        "password": "",
+        "db": "",
+        "collection": ""
+    }
+}
