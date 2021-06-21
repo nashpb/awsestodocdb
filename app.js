@@ -1,6 +1,7 @@
 const fs = require('fs');
 const { Client } = require('elasticsearch')
 const MongoClient = require('mongodb').MongoClient;
+var ca = [fs.readFileSync("rds-combined-ca-bundle.pem")];
 
 const migrate = async () => {
     
@@ -24,8 +25,8 @@ const migrate = async () => {
         
         //Mongo Client Setup
         var mongodb_auth_string = mongo_settings.username || mongo_settings.password ? `${mongo_settings.username}:${mongo_settings.password}@` : ''
-        var mongodb_url = `mongodb://${mongodb_auth_string}${mongo_settings.url}:${mongo_settings.port}?retryWrites=true&w=majority`
-        const mongodb_client = await MongoClient.connect(mongodb_url, { useNewUrlParser: true, useUnifiedTopology: true })
+        var mongodb_url = `mongodb://${mongodb_auth_string}${mongo_settings.url}:${mongo_settings.port}`
+        const mongodb_client = await MongoClient.connect(mongodb_url, { ssl: true, sslCA: ca })
         .catch(err => { console.log(err); });
         if (!mongodb_client) {
             return;
