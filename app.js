@@ -62,7 +62,7 @@ const migrate = async () => {
             
             await mongo_collection.insertMany(es_records)
             .then(results => {
-                console.log(`Loop ${j} Successful`)
+                console.log(`Loop ${j} Successful, inserted ${es_records.length} records`)
                 mongo_insert_success_count +=  es_records.length
             })
             .catch(error => {
