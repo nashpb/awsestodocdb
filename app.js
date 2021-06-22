@@ -36,7 +36,10 @@ const migrate = async () => {
         
         //ES GET COUNT OF RECORDS
         var es_records_count = (await es_client.count({
-            index: `${es_settings.index}`
+            index: `${es_settings.index}`,
+            body: {
+                query: {match_all: {}}
+            }
         })).count
         
         
@@ -55,7 +58,8 @@ const migrate = async () => {
                 index: `${es_settings.index}`,
                 body: {
                     from: i,
-                    size: page_length
+                    size: page_length,
+                    query: {match_all: {}}
                 }
             })).hits.hits
             
